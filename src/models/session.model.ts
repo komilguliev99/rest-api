@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import config from 'config';
 import { UserDocument } from './user.model';
 
-export interface SchemaDocument extends mongoose.Document {
+export interface SessionDocument extends mongoose.Document {
     user: UserDocument['_id'];
     valid: boolean;
     userAgent: string;
@@ -15,7 +15,7 @@ export interface SchemaDocument extends mongoose.Document {
 const sessionSchema = new mongoose.Schema(
     {
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-        vlaid: { type: Boolean, default: true },
+        valid: { type: Boolean, default: true },
         userAgent: { type: String}
     },
     {
